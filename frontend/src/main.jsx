@@ -12,6 +12,7 @@ import InterviewList from "./components/InterviewList.jsx";
 import StudentList from "./components/StudentList.jsx";
 import  RealJobs from "./components/RealJobs.jsx";
 import Interview from "./components/Interview.jsx";
+import Stundent from "./components/Stundent.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/students",
         element: <StudentList />
+      },
+      {
+        path: "/students/:studentId",
+        element: <Stundent />
       },
       {
         path: "/realJobs",

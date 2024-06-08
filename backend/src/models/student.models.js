@@ -17,7 +17,7 @@ const studentSchema = new mongoose.Schema({
     status: {
         type: String,
         enum: ["placed", "not_placed"],
-        required: true,
+        // required: true,
         default: "not_placed"
     },
     batch: { type: mongoose.Schema.Types.ObjectId, ref: 'Batch' },

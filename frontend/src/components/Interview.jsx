@@ -21,7 +21,8 @@ function Interview() {
 
       if (response) {
         // only students who are not allocated that will be shown here
-        const filterStudents = response.data.data.filter((item) => item.interviews.length === 0);
+        const filterStudents = response.data.data.filter(item => !item.interviews.some(item2 => item2 === interviewId));
+        console.log("filtered: ", filterStudents);
         setStudents(filterStudents);
       }
     } catch (error) {
@@ -45,7 +46,9 @@ function Interview() {
       console.log(response);
 
       if (response) {
-
+        setIsActive("allocate");
+        getInterviewInfo();
+        getAllocatedStudents();
       }
     } catch (error) {
       console.log(error);
@@ -69,7 +72,7 @@ function Interview() {
   const updateStatus = async (status, studentId) => {
     setStatus(status);
     try {
-      const response = await api.post(`/interview/updateStatus/${studentId}`, {status}, {
+      const response = await api.post(`/students/updateStatus/${studentId}/${interviewId}`, {status}, {
         withCredentials: true
       });
       console.log(response);
@@ -114,24 +117,27 @@ function Interview() {
                 <p className='font-semibold text-black'>Status</p>
                 <p className='font-semibold text-black'>Update Status</p>
               </div>
-              {
-                allocatedStudents?.map((item, index) => (
-                  <div key={index} className='bg-white flex w-[80vw] p-4 gap-12 items-center rounded-xl'>
-                    <p className='font-bold text-black'>{index + 1}.</p>
-                    <p className='font-semibold text-black'>{item?.name}</p>
-                    <p className='font-semibold text-black'>{item?.interviewsDetails[0].company}</p>
-                    <p className='font-semibold text-black'>{status}</p>
 
-                    <select className='bg-slate-600 p-2 text-white rounded-lg' 
-                    onChange={(e) => updateStatus(e.target.value, item?._id)}
-                    >
-                      <option value="pending">pending</option>
-                      <option value="selected">selected</option>
-                      <option value="not_selected">not_selected</option>
-                    </select>
-                  </div>
-                ))
-              }
+              <div className='flex  flex-col  gap-4'>
+                {
+                  allocatedStudents?.map((item, index) => (
+                    <div key={index} className='bg-white flex w-[80vw] p-4 gap-16 items-center rounded-xl'>
+                      <p className='font-bold text-black'>{index + 1}.</p>
+                      <p className='font-semibold text-black'>{item?.name}</p>
+                      <p className='font-semibold text-black'>{item?.interviewsDetails[0].company}</p>
+                      <p className='font-semibold text-black'>{status}</p>
+
+                      <select className='bg-slate-600 p-2 text-white rounded-lg' 
+                      onChange={(e) => updateStatus(e.target.value, item?._id)}
+                      >
+                        <option value="pending">pending</option>
+                        <option value="selected">selected</option>
+                        <option value="not_selected">not_selected</option>
+                      </select>
+                    </div>
+                  ))
+                }
+              </div>
             </div>
           )
         }

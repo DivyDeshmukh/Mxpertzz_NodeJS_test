@@ -12,8 +12,8 @@ const interviewSchema = new mongoose.Schema({
     // Student schema will contain the interview ID and with the help of that we will identify the students of a particular interview
     status: {
         type: String,
-        enum: ["selected", "not_selected", "pending"],
-        default: "pending"
+        enum: ["PASS", "FAIL", "On Hold", "Didn’t Attempt"],
+        default: "On Hold"
     }
 }, {timestamps: true});
 

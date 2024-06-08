@@ -235,7 +235,7 @@ const updateInterviewStatus = asyncHandler (async (req, res) => {
     }
 
     const student = await Student.findOneAndUpdate(
-        { _id: studentId, "interviews._id": interviewId },
+        { _id: studentId, "interviews._id": new mongoose.Types.ObjectId(interviewId) },
         { $set: { "interviews.$.status": status } },
         { new: true }
     );
