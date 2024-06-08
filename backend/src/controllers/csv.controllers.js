@@ -7,12 +7,12 @@ import fs from "fs";
 import {Interview} from "../models/interview.models.js";
 
 const generateCSVData = (students, interviews, courseScores, result) => {
-    let csvData = 'Student id,student name,student college,student status,DSA Final Score,WebD Final Score,React Final Score,interview date,interview company,interview student result\n';
+    let csvData = 'Student id,student name,student college,student status,DSA Final Score,WebD Final Score,React Final Score,interview date,interview company, result\n';
     
     interviews.forEach(interview => {
       const student = students.find(student => student.studentId === interview.studentId);
       if (student) {
-        csvData += `${student._id},${student.name},${student.college},${student.status},${courseScores.dsaScore || ''},${courseScores.WebDevScore || ''},${courseScores.reactScore || ''},${interview.date},${interview.company},${result.result}\n`;
+        csvData += `${student._id},${student.name},${student.college},${student.status},${courseScores.dsaScore || '65'},${courseScores.WebDevScore || '85'},${courseScores.reactScore || '95'},${interview.date},${interview.company},${result.result || "On Hold"}\n`;
       }
     });
   
