@@ -55,7 +55,7 @@ function App() {
   }, [authStatus]);
 
   return (
-    <div className="h-auto w-screen bg-red-600 flex justify-center items-center flex-col gap-4 pt-16 pb-16">
+    <div className="h-auto w-screen bg-red-600 flex justify-center items-center flex-col gap-4 pt-12 pb-12">
       {authStatus && (
         <div id="nav" className="flex gap-4 mb-8">
           <NavLink
@@ -97,6 +97,16 @@ function App() {
             }
           >
             Real Jobs
+          </NavLink>
+          <NavLink
+            to={"/download-csv"}
+            className={({ isActive }) =>
+              `${
+                isActive ? "text-white" : "text-black"
+              } bg-slate-500 p-3 rounded-lg`
+            }
+          >
+            Download CSV
           </NavLink>
         </div>
       )}

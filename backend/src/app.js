@@ -20,10 +20,12 @@ import userRouter from "./routes/user.routes.js";
 import batchRouter from "./routes/batch.routes.js";
 import studentRouter from "./routes/student.routes.js";
 import interviewRouter from "./routes/interview.routes.js";
+import csvRouter from "./routes/csv.routes.js";
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/batch", batchRouter);
 app.use("/api/v1/students", studentRouter);
 app.use("/api/v1/interview", interviewRouter);
+app.use("/api/v1/csv", csvRouter);
 
 export default app;

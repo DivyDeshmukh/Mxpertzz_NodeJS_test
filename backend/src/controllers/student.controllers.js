@@ -240,6 +240,66 @@ const updateInterviewStatus = asyncHandler (async (req, res) => {
         { new: true }
     );
 
+    console.log(student);
+
+});
+
+const getJobs = asyncHandler(async (req, res) => {
+    const jobs = [
+        {
+          "profile": "We are looking for a skilled software engineer with experience in full-stack web development.",
+          "company": "Tech Innovators Inc.",
+          "position": "Full-Stack Software Engineer"
+        },
+        {
+          "profile": "Seeking a creative graphic designer to join our marketing team.",
+          "company": "Design Dynamics Ltd.",
+          "position": "Graphic Designer"
+        },
+        {
+          "profile": "Join our fast-paced startup as a mobile app developer and help shape the future of our product.",
+          "company": "NextGen Solutions",
+          "position": "Mobile App Developer"
+        },
+        {
+          "profile": "We need a detail-oriented data analyst to help us make sense of our data and drive business decisions.",
+          "company": "Insightful Analytics Corp.",
+          "position": "Data Analyst"
+        },
+        {
+          "profile": "Exciting opportunity for a passionate UX/UI designer to create engaging user experiences.",
+          "company": "UserFirst Technologies",
+          "position": "UX/UI Designer"
+        },
+        {
+          "profile": "Join our dynamic sales team and help us expand our market reach.",
+          "company": "Global Solutions Inc.",
+          "position": "Sales Representative"
+        },
+        {
+          "profile": "Looking for an experienced project manager to lead our upcoming product launch.",
+          "company": "Project Management Pro",
+          "position": "Project Manager"
+        },
+        {
+          "profile": "Seeking a motivated customer support specialist to provide exceptional service to our clients.",
+          "company": "Service Excellence Ltd.",
+          "position": "Customer Support Specialist"
+        },
+        {
+          "profile": "Join our research team and contribute to cutting-edge scientific discoveries.",
+          "company": "Science Innovations Labs",
+          "position": "Research Scientist"
+        },
+        {
+          "profile": "We are hiring a skilled network engineer to maintain and optimize our network infrastructure.",
+          "company": "Network Solutions Ltd.",
+          "position": "Network Engineer"
+        }
+      ];
+      
+    return res.status(200)
+                .json(new ApiResponse(200, jobs, "Fetched jobs successfully"));
 });
 
 export {
@@ -249,6 +309,7 @@ export {
     addToBatch,
     allocateToInterview,
     getStudentsOfInterview,
-    updateInterviewStatus
+    updateInterviewStatus,
+    getJobs
 }
 

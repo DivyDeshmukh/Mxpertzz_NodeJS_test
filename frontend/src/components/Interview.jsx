@@ -97,7 +97,7 @@ function Interview() {
           </div>
           {
             students?.map((item, index) => (
-              <div key={index} to={`${item._id}`} className='bg-white flex w-[80vw] p-4 gap-12 items-center rounded-xl'>
+              <div key={index} to={`${item._id}`} className='bg-white flex w-[80vw] p-4 gap-12 items-center rounded-xl mb-4'>
               <p className='font-bold text-black'>{index + 1}.</p>
               <p className='font-semibold text-black'>{item?.name}</p>
               <button className='p-2 bg-slate-600 text-white rounded-xl' onClick={() => allocateToInterview(item?._id)}>add</button>

@@ -13,6 +13,8 @@ import StudentList from "./components/StudentList.jsx";
 import  RealJobs from "./components/RealJobs.jsx";
 import Interview from "./components/Interview.jsx";
 import Stundent from "./components/Stundent.jsx";
+import Error from "./components/Error.jsx";
+import DownloadCSV from "./components/DownloadCSV.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/realJobs",
         element: <RealJobs />
+      },
+      {
+        path: "/download-csv",
+        element: <DownloadCSV />
       }
     ],
   },
@@ -53,6 +59,10 @@ const router = createBrowserRouter([
     path: "/signup",
     element: <Signup />,
   },
+  {
+    path: "*",
+    element: <Error />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
