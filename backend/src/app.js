@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended: true, limit: "16kb"}));
 app.use(express.static("public"))
 // to perform crud operations on users server
 app.use(cookieParser());
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
     res.send("Server running Perfectly");
 });
 
