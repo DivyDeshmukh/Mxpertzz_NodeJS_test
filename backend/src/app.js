@@ -14,6 +14,9 @@ app.use(express.urlencoded({extended: true, limit: "16kb"}));
 app.use(express.static("public"))
 // to perform crud operations on users server
 app.use(cookieParser());
+app.use("/", (req, res) => {
+    res.send("Server running Perfectly");
+});
 
 // performing routing
 import userRouter from "./routes/user.routes.js";
